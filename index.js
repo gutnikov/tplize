@@ -85,13 +85,14 @@ Context.prototype._selector = function(selector) {
 			cls.push(mti.slice(1));
 		}
 	}
+	var result = [];
 	if (id) {
-		id = 'id="' + id + '"';
+		result.push('id="' + id + '"');
 	}
 	if (cls.length) {
-		classes = 'class="' + cls.join(' ') + '"';
+		result.push('class="' + cls.join(' ') + '"');
 	}
-	return (id + ' ' || '') + (classes || '');
+	return result.join(' ');
 };
 
 Context.prototype.toHtml = function() {
@@ -119,6 +120,22 @@ Context.prototype.times = function(n, fn) {
 	var i;
 	for (i = 0; i < n; i++) {
 		fn(i);
+	}
+};
+
+// each
+Context.prototype.each = function(iteratee,fn){
+	var i,k;
+	if( type(iteratee) === 'array' ){
+		for( i = 0; i < iteratee.length; i++ ){
+			fn(i,iteratee[i]);
+		}
+	} else if( type(iteratee) === 'object' ){
+		for( k in iteratee ){
+			if( iteratee.hasOwnProperty(k) ){
+				fn(k,iteratee[k]);
+			}
+		}
 	}
 };
 

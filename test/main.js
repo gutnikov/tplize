@@ -121,6 +121,73 @@ describe('Tplize', function() {
                 '</div>');
             done();
         });
+
+        it('should build proper html using times function',function(done){
+
+            var tpl = new Tpl(function(_) {
+                _.div('#div-id.div-class1.div-class2', function() {
+                    _.times(3,function(ind){
+                        _.span('#span-id-' + ind, 'Span ' + ind);
+                    })
+                });
+            });
+            String(tpl.toHtml()).should.equal(
+                '<div id="div-id" class="div-class1 div-class2">' +
+                '<span id="span-id-0">Span 0</span>' + 
+                '<span id="span-id-1">Span 1</span>' + 
+                '<span id="span-id-2">Span 2</span>' + 
+                '</div>');
+            done();
+        });
+
+        it('should build proper html using each function over an array',function(done){
+
+            var agents = [
+                {ind: 22, name: 'Li'},
+                {ind: 31, name: 'Mao'},
+                {ind: 42, name: 'Sao'}
+            ];
+
+            var tpl = new Tpl(function(_) {
+                _.div('#div-id.div-class1.div-class2', function() {
+                    _.each(agents,function(ind,obj){
+                        _.span({'data-ind':obj.ind},obj.name);
+                    })
+                });
+            });
+            String(tpl.toHtml()).should.equal(
+                '<div id="div-id" class="div-class1 div-class2">' +
+                '<span data-ind="22">Li</span>' + 
+                '<span data-ind="31">Mao</span>' + 
+                '<span data-ind="42">Sao</span>' + 
+                '</div>');
+            done();
+        });
+
+        it('should build proper html using each function over an object',function(done){
+
+            var agents = {
+                Li: 22,
+                Mao: 31,
+                Sao: 42
+            };
+
+            var tpl = new Tpl(function(_) {
+                _.div('#div-id.div-class1.div-class2', function() {
+                    _.each(agents,function(key,value){
+                        _.span({'data-ind':value},key);
+                    })
+                });
+            });
+            String(tpl.toHtml()).should.equal(
+                '<div id="div-id" class="div-class1 div-class2">' +
+                '<span data-ind="22">Li</span>' + 
+                '<span data-ind="31">Mao</span>' + 
+                '<span data-ind="42">Sao</span>' + 
+                '</div>');
+            done();
+        });
+
     });
 
 });
