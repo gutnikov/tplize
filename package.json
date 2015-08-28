@@ -1,0 +1,30 @@
+{
+  "name": "tplize",
+  "version": "0.5.1",
+  "description": "",
+  "homepage": "https://github.com/alxgutnikov/tplize",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alxgutnikov/tplize.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "js templates"
+  ],
+  "author": {
+    "name": "Alexander Gutnikov"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.17.0",
+    "should": "~2.1.1"
+  },
+  "dependencies": {
+    "event-stream": "~3.1.0",
+    "glob": "^5.0.12",
+    "gulp-util": "~2.2.10"
+  }
+}
