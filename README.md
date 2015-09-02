@@ -5,8 +5,8 @@
 
 * no setup, precompiling templates to functions etc - what you write is already a function
 * it was designed the way a templating functions stay quite readable
-* what you write - is still a plain javascript code, so put any logic ( but be carefull )
-* get ide-hits, debug it etc
+* what you write is still a plain javascript code, so put any logic ( but be carefull )
+* get ide-hints, debug what you write, etc
 
 ## Quick example
 
