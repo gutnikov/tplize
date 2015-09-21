@@ -11,7 +11,7 @@
 ## Quick example
 
 ```javascript
-// A templating function get`s a context parameter first
+// A templating function get's a context parameter first
 // Any data agruments can be passed either ( see Tplize.toHtml call below )
 function employeList( _, data ) {
 
