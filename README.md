@@ -13,25 +13,25 @@
 ```javascript
 function employeList( _, data ) {
 
-    _.div( "#employe-list.styled-list", function() {
+	_.div( "#employe-list.styled-list", function() {
 
-        _.h1( "Peopleware:" );
+		_.h1( "Peopleware:" );
 
-        _.each( data.people, function( ind, person ) {
+		_.each( data.people, function( ind, person ) {
 
-            _.div( ".person-record", { "data-person-id": person.id }, fullName( person ) );
+			_.div( ".person-record", { "data-person-id": person.id }, fullName( person ) );
 
-        } );
+		} );
 
-        _.button( "#add-new-person", "+ Add new" );
+		_.button( "#add-new-person", "+ Add new" );
 
-    } );
+	} );
 
-    function fullName( person ) {
-        return function() {
-            _.txt( "%surname%, %name%", person );
-        };
-    }
+	function fullName( person ) {
+		return function() {
+			_.txt( "%surname%, %name%", person );
+		};
+	}
 
-}	
+}
 ```
