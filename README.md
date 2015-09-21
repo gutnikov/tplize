@@ -25,7 +25,7 @@ function employeList( _, data ) {
 
 		} );
 
-		_.button( "#add-new-person", "+ Add new" );
+		_.button( "#add-new-person", {value: "+ Add new"} );
 
 	} );
 
