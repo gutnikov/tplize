@@ -115,6 +115,14 @@ Context.prototype.toHtml = function() {
 	return bakeNode( this.root[ 0 ] );
 };
 
+Context.toHtml = function() {
+	var fn, ctx, args = [].slice.call( arguments );
+	fn = args.shift(),
+	args.unshift( ctx = new Context() );
+	fn.apply( null, args );
+	return ctx.toHtml();	
+};
+
 // Loop: n-times repeat
 Context.prototype.times = function( n, fn ) {
 	var i;
@@ -212,10 +220,10 @@ function type( obj ) {
 		Context.prototype[ inputs[ i ] ] = ( function( inputName ) {
 			return function() {
 				var args = [].slice.call( arguments );
-				if ( type( args[ 0 ] ) !== "object" ) {
-					args.unshift( {} );
+				if ( type( args[ 1 ] ) !== "object" ) {
+					args.splice(1,0,{});
 				}
-				args[ 0 ].type = inputName;
+				args[ 1 ].type = inputName;
 				args.unshift( "input" );
 				return this.tag.apply( this, args );
 			};
